@@ -1,0 +1,16 @@
+<view class="container">
+
+  <block wx:for="{{smsList}}" wx:for-item="sms">
+    <view class="zan-panel">
+      <view class="zan-cell"> 
+          <view class="zan-cell__bd">{{sms.sendBy}}</view>
+          <view class="zan-cell__ft">{{sms.sendTime}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">{{sms.context}}</view>
+        </view>
+       </view>
+  </block>
+
+
+</view>

@@ -7,7 +7,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: false
+    list: [
+      {
+        name: '短信',
+        path: '/pages/sms/sms'
+      }, {
+        name: '测试',
+        path: '/pages/sms/sms'
+      }
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
