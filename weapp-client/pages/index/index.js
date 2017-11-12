@@ -7,13 +7,17 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    hasOpenId: false,
     list: [
       {
         name: '短信',
         path: '/pages/sms/sms'
       }, {
+        name: '插入',
+        path: '/pages/insertSMS/insertSMS'
+      }, {
         name: '测试',
-        path: '/pages/sms/sms'
+        path: '/pages/logs/logs'
       }
     ]
   },
@@ -26,10 +30,11 @@ Page({
   onLoad: function () {
 
     var that = this;
-    if (app.globalData.userInfo) {
+    if (app.globalData.userInfo && app.globalData.openId) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        hasOpenId: true
       })
     } else {
       that._login();
@@ -55,12 +60,18 @@ Page({
               })
               console.info('getOpenID');
               wx.request({
-                url: app.globalData.host + '/getOpenId',
+                url: app.globalData.host + '/login',
                 data: { code: code },
                 method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT      
                 success: function (res) {
                   console.info(res.data);
-                  app.globalData.openId = res.data.openId;
+                  if (res.data.openid){
+                    app.globalData.openId = res.data.openid;
+                    that.setData({
+                      userInfo: app.globalData.userInfo,
+                      hasOpenId: true
+                    })
+                  }
                 }
               });
             }

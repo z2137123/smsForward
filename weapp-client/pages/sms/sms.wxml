@@ -1,16 +1,22 @@
 <view class="container">
-
-  <block wx:for="{{smsList}}" wx:for-item="sms">
-    <view class="zan-panel">
-      <view class="zan-cell"> 
-          <view class="zan-cell__bd">{{sms.sendBy}}</view>
-          <view class="zan-cell__ft">{{sms.sendTime}}</view>
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
+        class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh" upper-threshold="200px">
+    <block wx:for="{{smsList}}" wx:for-item="sms">
+      <view class="zan-panel">
+        <view class="zan-cell"> 
+            <view class="zan-cell__bd">{{sms.sendBy}}</view>
+            <view class="zan-cell__ft">{{sms.sendTime}}</view>
+          </view>
+          <view class="zan-cell">
+            <view class="zan-cell__bd">{{sms.context}}</view>
+          </view>
         </view>
-        <view class="zan-cell">
-          <view class="zan-cell__bd">{{sms.context}}</view>
-        </view>
-       </view>
-  </block>
-
+    </block>
+  </scroll-view>
+  <view class="body-view">
+        <loading hidden="{{hidden}}" bindchange="loadingChange">
+            加载中...
+        </loading>
+  </view>
 
 </view>

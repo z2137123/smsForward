@@ -50,9 +50,10 @@ App({
     // })
   },
   globalData: {
-    host:'https://26170473.qcloud.la',
+    host:'https://26170473.qcloud.la/webserver',
     appid: 'wx349ab0f21271a96e',//appid需自己提供，此处的appid我随机编写  
     secret: 'b3c7bba940fb0063e50c65835293a223',
+    weKey:'Holyshit1993',
     openId:null,
     userInfo: null
   }
